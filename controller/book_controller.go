@@ -1,12 +1,12 @@
 package controller
 
 import (
-	"cek/auth"
+	"go-library/auth"
 
 	"github.com/gin-gonic/gin"
 )
 
-type NoteController interface {
+type BookController interface {
 	FindAll(c *gin.Context, auth *auth.AccessDetails)
 	Create(c *gin.Context, auth *auth.AccessDetails)
 	Update(c *gin.Context, auth *auth.AccessDetails)

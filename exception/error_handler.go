@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"strings"
 
-	"cek/helper"
-	"cek/model/web"
+	"go-library/helper"
+	"go-library/model/web"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"

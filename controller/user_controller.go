@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"cek/auth"
+	"go-library/auth"
 
 	"github.com/gin-gonic/gin"
 )

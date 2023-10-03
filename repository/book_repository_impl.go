@@ -1,60 +1,60 @@
 package repository
 
 import (
-	"cek/exception"
-	"cek/helper"
-	"cek/model/domain"
+	"go-library/exception"
+	"go-library/helper"
+	"go-library/model/domain"
 	"strings"
 
 	"gorm.io/gorm"
 )
 
-type NoteRepositoryImpl struct {
+type BookRepositoryImpl struct {
 }
 
-func NewNoteRepository() NoteRepository {
-	return &NoteRepositoryImpl{}
+func NewBookRepository() BookRepository {
+	return &BookRepositoryImpl{}
 }
 
-func (repository *NoteRepositoryImpl) FindAll(db *gorm.DB, filters *map[string]string) domain.Notes {
-	notes := domain.Notes{}
-	tx := db.Model(&domain.Note{}).
+func (repository *BookRepositoryImpl) FindAll(db *gorm.DB, filters *map[string]string) domain.Books {
+	books := domain.Books{}
+	tx := db.Model(&domain.Book{}).
 		Joins("CreatedBy").
 		Joins("UpdatedBy")
-	err := tx.Find(&notes).Error
+	err := tx.Find(&books).Error
 	helper.PanicIfError(err)
 
-	return notes
+	return books
 }
 
-func (repository *NoteRepositoryImpl) Create(db *gorm.DB, note *domain.Note) *domain.Note {
+func (repository *BookRepositoryImpl) Create(db *gorm.DB, book *domain.Book) *domain.Book {
 
-	err := db.Create(&note).Error
+	err := db.Create(&book).Error
 	if err != nil {
 		if strings.Contains(err.Error(), "Duplicate") {
 			err = &exception.ErrorSendToResponse{Err: "record already exists"}
 		}
 	}
 	helper.PanicIfError(err)
-	return note
+	return book
 }
 
-func (repository *NoteRepositoryImpl) Update(db *gorm.DB, note *domain.Note) *domain.Note {
-	err := db.Updates(&note).Error
+func (repository *BookRepositoryImpl) Update(db *gorm.DB, book *domain.Book) *domain.Book {
+	err := db.Updates(&book).Error
 	helper.PanicIfError(err)
 
-	err = db.First(&note).Error
+	err = db.First(&book).Error
 	helper.PanicIfError(err)
 
 	// err = helper.CreateHistory(db, eventDetail, helper.HistoryUpdate, eventDetail.UpdatedByID)
 	// helper.PanicIfError(err)
 
-	return note
+	return book
 }
 
-func (repository *NoteRepositoryImpl) Delete(db *gorm.DB, id *int, deletedByID *uint) {
-	eventDetail := &domain.Note{}
-	tx := db.First(eventDetail, id).Updates(&domain.Note{
+func (repository *BookRepositoryImpl) Delete(db *gorm.DB, id *int, deletedByID *uint) {
+	eventDetail := &domain.Book{}
+	tx := db.First(eventDetail, id).Updates(&domain.Book{
 		// Model:       gorm.Model{ID: uint(*id)},
 		DeletedByID: deletedByID,
 	})

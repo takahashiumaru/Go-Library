@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"cek/helper"
-	"cek/service"
+	"go-library/helper"
+	"go-library/service"
 
 	"github.com/gin-gonic/gin"
 )

@@ -5,8 +5,8 @@ import (
 	"runtime/debug"
 	"time"
 
-	"cek/exception"
-	"cek/route"
+	"go-library/exception"
+	"go-library/route"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -40,9 +40,12 @@ func NewRouter(db *gorm.DB, validate *validator.Validate) *gin.Engine {
 		},
 		MaxAge: 12 * time.Hour,
 	}))
-	route.NoteRoute(router, db, validate)
 	route.UserRoute(router, db, validate)
 	route.FileRoute(router, db, validate)
+
+	route.BookRoute(router, db, validate)
+	route.CategoryRoute(router, db, validate)
+	route.PublisherRoute(router, db, validate)
 
 	return router
 }

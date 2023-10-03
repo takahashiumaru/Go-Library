@@ -5,8 +5,8 @@ import (
 	"os"
 	"time"
 
-	"cek/helper"
-	"cek/model/domain"
+	"go-library/helper"
+	"go-library/model/domain"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -38,7 +38,9 @@ func ConnectDatabase(user, host, password, port, db string) *gorm.DB {
 	err = database.AutoMigrate(
 
 		// GOLANG
-		&domain.Note{},
+		&domain.Book{},
+		&domain.Category{},
+		&domain.Publisher{},
 		&domain.User{},
 		&domain.Session{},
 	)
@@ -48,6 +50,14 @@ func ConnectDatabase(user, host, password, port, db string) *gorm.DB {
 
 	// RUN after_auto_migrate.sql
 	helper.RunSQLFromFile(database, "app/database/after_auto_migrate.sql")
+
+	// Delete Constraint
+	database.Exec("ALTER TABLE books DROP FOREIGN KEY fk_books_category")
+	database.Exec("ALTER TABLE books DROP FOREIGN KEY fk_books_publisher")
+
+	// Add Constraint
+	database.Exec("ALTER TABLE books ADD CONSTRAINT fk_books_category FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE RESTRICT ON UPDATE RESTRICT")
+	database.Exec("ALTER TABLE books ADD CONSTRAINT fk_books_publisher FOREIGN KEY (publisher_id) REFERENCES publishers(id) ON DELETE RESTRICT ON UPDATE RESTRICT")
 
 	return database
 }

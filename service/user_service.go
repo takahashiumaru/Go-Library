@@ -1,8 +1,8 @@
 package service
 
 import (
-	"cek/auth"
-	"cek/model/web"
+	"go-library/auth"
+	"go-library/model/web"
 )
 
 type UserService interface {

@@ -1,8 +1,8 @@
 package route
 
 import (
-	"cek/controller"
-	"cek/service"
+	"go-library/controller"
+	"go-library/service"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"

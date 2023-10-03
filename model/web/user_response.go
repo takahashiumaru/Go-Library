@@ -2,7 +2,7 @@ package web
 
 type UserResponse struct {
 	// Fields
-	ID          uint `json:"id"`
+	ID          uint   `json:"id"`
 	CreatedByID string `json:"created_by_id"`
 	UpdatedByID string `json:"updated_by_id"`
 	Nip         string `json:"nip"`
@@ -16,6 +16,6 @@ type UserResponse struct {
 }
 type UserShortResponse struct {
 	// Fields
-	ID   uint `json:"id"`
+	ID   uint   `json:"id"`
 	Name string `json:"name"`
 }

@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"cek/model/domain"
+	"go-library/model/domain"
 
 	"gorm.io/gorm"
 )

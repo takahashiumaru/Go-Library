@@ -3,9 +3,9 @@ package repository
 import (
 	"errors"
 
-	"cek/exception"
-	"cek/helper"
-	"cek/model/domain"
+	"go-library/exception"
+	"go-library/helper"
+	"go-library/model/domain"
 
 	"gorm.io/gorm"
 )

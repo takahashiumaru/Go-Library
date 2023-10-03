@@ -3,7 +3,7 @@ services:
   api:
     restart: always
     container_name: mf-micro-service-ski-discount-proposal
-    image: registry.gitlab.com/vneu/mf-micro-service-discount-proposal:${TAG}
+    image: registry.gitlab.com/
     volumes:
       - /home/DOCKER/mf-micro-service/file:/app/API-SKI/file
       - /home/DOCKER/mf-micro-service/file:/app/file-web

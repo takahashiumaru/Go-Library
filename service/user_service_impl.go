@@ -5,14 +5,14 @@ import (
 	"strconv"
 	"time"
 
-	"cek/auth"
-	"cek/exception"
-	"cek/helper"
-	"cek/model/domain"
-	"cek/model/web"
-	"cek/repository"
+	"go-library/auth"
+	"go-library/exception"
+	"go-library/helper"
+	"go-library/model/domain"
+	"go-library/model/web"
+	"go-library/repository"
 
-	c "cek/configuration"
+	c "go-library/configuration"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/go-playground/validator/v10"

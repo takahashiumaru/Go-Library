@@ -4,9 +4,9 @@ import (
 	"log"
 	"net/http"
 
-	"cek/app"
-	c "cek/configuration"
-	"cek/helper"
+	"go-library/app"
+	c "go-library/configuration"
+	"go-library/helper"
 
 	"github.com/go-playground/validator/v10"
 )

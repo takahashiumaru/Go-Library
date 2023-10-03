@@ -4,10 +4,10 @@ import (
 	"net/http"
 	"strconv"
 
-	"cek/auth"
-	"cek/helper"
-	"cek/model/web"
-	"cek/service"
+	"go-library/auth"
+	"go-library/helper"
+	"go-library/model/web"
+	"go-library/service"
 
 	"github.com/gin-gonic/gin"
 )
@@ -137,7 +137,6 @@ func (controller *UserControllerImpl) Update(c *gin.Context, auth *auth.AccessDe
 	paramID := c.Param("id")
 	userID, err := strconv.Atoi(paramID)
 	helper.PanicIfError(err)
-
 
 	userResponse := controller.UserService.Update(&userID, request)
 	webResponse := web.WebResponse{

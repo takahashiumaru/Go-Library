@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-type NoteResponse struct {
+type CategoryResponse struct {
 	// Required Fields
 	ID          uint              `json:"id"`
 	CreatedByID uint              `json:"created_by_id"`
@@ -15,6 +15,6 @@ type NoteResponse struct {
 	UpdatedBy   UserShortResponse `json:"updated_by"`
 
 	// Required Fields
-	Subject string `json:"subject"`
-	Note    string `json:"address"`
+	CategoryCode string `json:"category_code"`
+	Name         string `json:"name"`
 }

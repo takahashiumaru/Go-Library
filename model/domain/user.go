@@ -1,7 +1,7 @@
 package domain
 
 import (
-	"cek/model/web"
+	"go-library/model/web"
 
 	"gorm.io/gorm"
 )

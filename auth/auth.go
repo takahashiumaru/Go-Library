@@ -8,11 +8,11 @@ import (
 	"strings"
 	"time"
 
-	"cek/exception"
-	"cek/helper"
-	"cek/model/domain"
+	"go-library/exception"
+	"go-library/helper"
+	"go-library/model/domain"
 
-	c "cek/configuration"
+	c "go-library/configuration"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
